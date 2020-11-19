@@ -1,0 +1,85 @@
+@model Elisab.BAL.ViewModel.FashionShows_VM
+@{
+  ViewBag.Title = "Fashion Shows";
+}
+
+
+<section class="content-header">
+  <h1>
+    @ViewBag.Title
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a href="@Url.Action("Index", "Home")">
+        <i class="fa fa-home"></i> Home
+      </a>
+    </li>
+    <li class="active">
+      <a href="@Url.Action("List", "FashionShow")">
+        @ViewBag.Title
+      </a>
+    </li>
+    <li class="active">
+      @if (Model != null && Model.Id > 0)
+      {
+        <a href="@Url.Action("Save", "FashionShow")">
+          Fashion Show Edit
+        </a>
+      }
+      else
+      {
+        <a href="@Url.Action("Save", "FashionShow")">
+          Fashion Show Add
+        </a>
+      }
+    </li>
+  </ol>
+</section>
+
+<div class="box box-primary clear">
+  <form role="form">
+    <div class="box-body">
+      <div class="row">
+        @Html.HiddenFor(m => m.Id)
+
+        <div class="form-group col-xs-4">
+          <label>Name<span class="require">*</span></label>
+          @Html.TextBoxFor(m => m.Name, new { placeholder = "Name", @class = "form-control" })
+        </div>
+
+        <div class="form-group col-xs-4">
+          <label>Show Date<span class="require">*</span></label>
+          <div class="input-group date">
+            <div class="input-group-addon" id="showDateDiv">
+              <i class="fa fa-calendar"></i>
+            </div>
+            @Html.TextBoxFor(m => m.ShowDate, new { placeholder = "Show Date", @class = "form-control pull-right datepicker", autocomplete = "off" })
+          </div>
+        </div>
+
+        <div class="form-group col-xs-2">
+          <label>Show Time<span class="require">*</span></label>
+          <div class="input-group">
+            @Html.TextBoxFor(m => m.ShowTime, new { placeholder = "Show Time", @class = "form-control pull-right timepicker", autocomplete = "off" })
+          </div>
+        </div>
+
+        <div class="form-group col-xs-2">
+          <label>Is Active<span class="require">*</span></label>
+          <div class="input-group">
+            @Html.CheckBoxFor(m => m.IsActive)
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="box-footer">
+      <button type="button" class="btn btn-primary" style="margin-right:5px" onclick="Add()">Submit</button>
+      <button type="button" class="btn btn-default" onclick="goBack()">Back</button>
+    </div>
+  </form>
+</div>
+
+
+<script src="~/Script/FashionShow.js?@Elisab.WebApp.Helper.Helper.UnqiueId()"></script>

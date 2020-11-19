@@ -1,0 +1,157 @@
+var routeURL = location.protocol + '//' + location.host;
+
+$(document).ready(function () {
+
+  $("#imgUpload").change(function (e) {
+    var file;
+    if ((file = this.files[0])) {
+      var fileExtension = file.name.split('.').pop().toLowerCase();
+      var validExtensions = ['png', 'jpg', 'jpeg'];
+      if ($.inArray(fileExtension, validExtensions) == -1) {
+        $("#imgUpload").val('');
+        $('#backgroundImg').attr("src", '');
+        $("#deleteImg").hide();
+        alert("Invalid file type");
+      }
+      else {
+        var reader = new FileReader();
+        var imgtag = document.getElementById("backgroundImg");
+        imgtag.title = file.name;
+
+        reader.onload = function (event) {
+          imgtag.src = event.target.result;
+        };
+
+        reader.readAsDataURL(file);
+        $("#deleteImg").show();
+      }
+    }
+  });
+});
+
+function onFashionShowChange() {
+  clear();
+  $.ajax({
+    url: routeURL + '/api/AdminApi/GetMainPageByFashionShowId?Id=' + $("#fashionShowId").val(),
+    type: 'GET',
+    success: function (data) {
+      if (data.status == 1) {
+        $("#ContentText").val(data.dataenum.ContentText);
+        $("#mainPageId").val(data.dataenum.Id);
+        $('#imgbackground').attr("src", '/UploadImg/' + data.dataenum.BackgroundImage);
+        $('#imgInner').attr("src", '/UploadImg/' + data.dataenum.InnerImage);
+        $('#imgLogo').attr("src", '/UploadImg/' + data.dataenum.LogoImage);
+        $("#deleteImg").show();
+      }
+      else if (data.status == -3) {
+        window.location = routeURL + '/Home/Index';
+      }
+    }
+  });
+}
+
+function onSubmit() {
+  if (validation()) {
+    var requestData = new FormData();
+    var imgback = document.getElementById('backgroundImg');
+    var imginner = document.getElementById('innerImg');
+    var imglogo = document.getElementById('logoImg');
+
+    if (img.files.length > 0) {
+      requestData.append(imgback.files[0].name, img.files[0]);
+      requestData.append(imginner.files[0].name, img.files[0]);
+      requestData.append(imglogo.files[0].name, img.files[0]);
+    }
+    var mainPageId = 0;
+    if ($("#mainPageId").val() != "") {
+      mainPageId = $("#mainPageId").val();
+    }
+    requestData.append('mainPageId', mainPageId);
+    requestData.append('fashionShowId', $('#fashionShowId').val());
+    requestData.append('contentText', $.trim($('#ContentText').val()));
+
+    $.ajax({
+      url: routeURL + '/api/AdminApi/SaveMainPage',
+      type: 'POST',
+      data: requestData,
+      dataType: 'json',
+      contentType: false,
+      processData: false,
+      success: function (result) {
+        if (result.status == 1) {
+          clear();
+          $('#fashionShowId').prop('selectedIndex', 0);
+          $('.selectpicker').selectpicker('refresh');
+          if (addressId > 0) {
+            alert("MainPage updated successfully");
+          } else {
+            alert("MainPage added successfully");
+          }
+        }
+        else if (result.status == 0) {
+          if (mainPageId > 0) {
+            alert("MainPage updated un-successfully");
+          } else {
+            alert("MainPage not un-successfully");
+          }
+        }
+        else {
+          alert(result.message);
+        }
+      },
+      error: function (xhr) {
+        alert(xhr.statusText);
+      },
+    });
+  }
+  else {
+    alert("Please fill all require fields")
+  }
+}
+
+function validation() {
+  var isValid = true;
+
+  if (jQuery.trim($("#ContentText").val()) == "") {
+    isValid = false;
+  }
+
+  if ($('#fashionShowId').val() == null) {
+    isValid = false;
+  }
+
+  var imgSrc = $('#backgroundImg').attr("src");
+  if (imgSrc == "") {
+    isValid = false;
+  }
+
+  var imgInner = $('#innerImg').attr("src");
+  if (imgInner == "") {
+    isValid = false;
+  }
+
+  var imgLogo = $('#logoImg').attr("src");
+  if (imgLogo == "") {
+    isValid = false;
+  }
+
+  return isValid;
+}
+
+function removeImg() {
+  $("#imgUpload").val('');
+  $('#backgroundImg').attr("src", '');
+  $('#innerImg').attr("src", '');
+  $('#logoImg').attr("src", '');
+  $("#deleteImg").hide();
+}
+
+function clear() {
+  $("#ContentText").val("");
+  $("#mainPageId").val("");
+  $('#backgroundImg').attr("src", "");
+  $('#innerImg').attr("src", "");
+  $('#logoImg').attr("src", "");
+  $("#deleteImg").hide();
+  $("#imgUpload").val('');
+}

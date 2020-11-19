@@ -1,0 +1,68 @@
+
+@{
+  Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width" />
+  <title>Login</title>
+
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link href="~/Content/css/AdminLTE.min.css" rel="stylesheet" />
+  <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="~/Content/css/custom.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <script src="~/Content/js/plugins/jquery/jquery-3.3.1.min.js"></script>
+</head>
+
+<body class="hold-transition login-page gallery-login">
+
+  <script>
+    $(document).ready(function () {
+      var fascode = document.URL.split('/')[document.URL.split('/').length - 1];
+      $("#fascode").val(fascode);
+    });
+  </script>
+
+
+  <div class="login-box gallery-box">
+
+    <div class="login-box-body gallery-box-body text-center" id="loginDiv">
+
+      <h4 class="text-black text-bold mb-30">GALLERY LOGIN</h4>
+
+      <h5 class="text-black text-bold mb-30">SIGN IN TO ACCESS THE COLLECTION PHOTOS</h5>
+
+      <form action="/GalleryLogin/Authenticateuser" method="post">
+        <input type="hidden" value="" id="fascode" name="fascode" />
+
+        <div class="form-group has-feedback" style="display:none;">
+          <input type="text" class="form-control" placeholder="User name" id="txtUserName" name="txtUserName" value="user">
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+
+        <div class="form-group has-feedback">
+          <input type="password" class="form-control text-black bg-none" placeholder="Password" id="txtPassword" name="txtPassword">
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-6"></div>
+          <div class="col-xs-6 text-right">
+            <button type="submit" class="btn bg-none text-black text-bold w-60">Sign In</button>
+          </div>
+        </div>
+
+
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
+
+

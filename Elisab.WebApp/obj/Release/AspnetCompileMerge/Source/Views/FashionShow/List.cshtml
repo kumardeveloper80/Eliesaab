@@ -1,0 +1,44 @@
+@model List<Elisab.BAL.ViewModel.FashionShows_VM>
+@{
+  ViewBag.Title = "Fashion Shows";
+}
+
+<section class="content-header">
+  <h1>
+    @ViewBag.Title
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a href="@Url.Action("Index", "Home")">
+        <i class="fa fa-home"></i> Home
+      </a>
+    </li>
+    <li class="active">
+      <a href="@Url.Action("List", "FashionShow")">
+        @ViewBag.Title
+      </a>
+    </li>
+  </ol>
+</section>
+
+<div class="clear">
+  <div class="box box-primary clear">
+    <div class="box-body">
+      <div class="row">
+        <div class="col-xs-12 text-right mb-15">
+          <a class="btn btn-primary" href="@Url.Action("Save", "FashionShow")">Add New</a>
+        </div>
+      </div>
+      <div id="fashionShowList">
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<script src="~/Script/common.js"></script>
+<script src="~/Content/js/plugins/jquery/jquery-3.3.1.min.js"></script>
+<script src="~/Script/FashionShow.js?@Elisab.WebApp.Helper.Helper.UnqiueId()"></script>
+<script>
+  GetAll();
+</script>

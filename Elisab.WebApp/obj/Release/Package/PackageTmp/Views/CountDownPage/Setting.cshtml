@@ -1,0 +1,119 @@
+@model Elisab.BAL.ViewModel.CountDownPage_VM
+@{
+  ViewBag.Title = "Count Down Page";
+}
+
+<section class="content-header">
+  <h1>
+    @ViewBag.Title
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a href="@Url.Action("Index", "Home")">
+        <i class="fa fa-home"></i> Home
+      </a>
+    </li>
+    <li class="active">
+      <a href="@Url.Action("Index", "Address")">
+        @ViewBag.Title
+      </a>
+    </li>
+  </ol>
+</section>
+
+<div class="box box-primary clear">
+
+  <div class="box-body">
+
+    @Html.HiddenFor(m => m.Id, new { id = "countDownPageId" })
+
+    <div class="row">
+      <div class="form-group col-sm-6">
+        <label>Fashion Show Name<span class="require">*</span></label>
+        <select class="form-control selectpicker" id="fashionShowId" onchange="onFashionShowChange()">
+          <option disabled selected> Select </option>
+          @foreach (var item in ViewData["fashionShow"] as List<Elisab.BAL.ViewModel.FashionShows_VM>)
+          {
+            <option value="@item.Id"> @item.Name </option>
+          }
+        </select>
+      </div>
+
+      <div class="form-group col-sm-6 hide mt-30" id="evenDateDiv">
+        <label>Event Date :: <span id="evenDateSpan" style="color:green"></span></label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12" id="mainContentDiv">
+        <label class="control-label">Main Content<span class="require">*</span></label>
+        @Html.TextAreaFor(m => m.MainContent, new { @class = "ckeditor" })
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-sm-3">
+        <label>Header Logo<span class="require">*</span></label>
+        <div>
+          <input type="file" accept="image/*" id="headerLogoUpload">
+        </div>
+      </div>
+
+      <div class="form-group col-sm-3">
+        <label>Main Background Image<span class="require">*</span></label>
+        <div>
+          <input type="file" accept="image/*" id="mainBgImgUpload">
+        </div>
+      </div>
+
+      <div class="form-group col-sm-3">
+        <label>Main Inner Image<span class="require">*</span></label>
+        <div>
+          <input type="file" accept="image/*" id="innerImgUpload">
+        </div>
+      </div>
+
+      <div class="form-group col-sm-3">
+        <label>Footer Background Image<span class="require">*</span></label>
+        <div>
+          <input type="file" accept="image/*" id="footerBgImgUpload">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-sm-3">
+        <div class="pull-left position-relative">
+          <img class="mt-15" src="" width="150" height="150" alt="" id="headerLogo">
+        </div>
+      </div>
+
+      <div class="form-group col-sm-3">
+        <div class="pull-left position-relative">
+          <img class="mt-15" src="" width="150" height="150" alt="" id="mainBgImg">
+        </div>
+      </div>
+
+      <div class="form-group col-sm-3">
+        <div class="pull-left position-relative">
+          <img class="mt-15" src="" width="150" height="150" alt="" id="innerImg">
+        </div>
+      </div>
+
+      <div class="form-group col-sm-3">
+        <div class="pull-left position-relative">
+          <img class="mt-15" src="" width="150" height="150" alt="" id="footerBgImg">
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="box-footer">
+    <button type="button" class="btn btn-primary" onclick="onSubmit()">Submit</button>
+  </div>
+
+</div>
+<script src="~/Content/js/plugins/jquery/jquery-3.3.1.min.js"></script>
+<script src="~/Content/ckeditor/ckeditor.js"></script>
+<script src="~/Script/CountDownPage.js?@Elisab.WebApp.Helper.Helper.UnqiueId()"></script>

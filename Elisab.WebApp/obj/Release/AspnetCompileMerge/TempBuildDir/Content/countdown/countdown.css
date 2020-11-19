@@ -1,0 +1,56 @@
+body { margin: 0; padding:0; font-family: 'Roboto', sans-serif; }
+html, body, .wraper { height: 100%; }
+
+@font-face { font-family: 'aw_conqueror_didotlight'; src: url('fonts/awconquerordidot-light_2-webfont.woff2') format('woff2'), url('fonts/awconquerordidot-light_2-webfont.woff') format('woff'); font-weight: normal; font-style: normal;}
+
+.inner-wraper { max-width: 1080px; width: 100%; padding: 270px 0; margin: 0 auto; align-items: center; display: flex; background-size: cover; }
+.content { width: 100%; background-size: cover; padding: 285px 15px 210px; box-sizing: border-box; background-repeat: no-repeat; background-position: left top; position: relative; margin: 0 auto; max-width: 760px; }
+.logo { text-align: center; }
+.logo img {max-width: 100%; height: auto;}
+/*.wraper { display: flex; flex-direction: column; justify-content: space-between;}*/
+
+
+/*Timer CSS*/
+.timer { padding: 90px 0 20px; text-align: center; font-size: 60px; font-weight: 400; letter-spacing: 0px; }
+ul#example { list-style-type: none; padding: 0; display: block; text-align: center; margin: 0px; }
+ul#example li { display: inline-block; vertical-align: top; }
+
+
+.main-content p { margin: 0; text-align: center; text-transform: uppercase; font-weight: 700; font-size: 28px; color: #1d1d1b; letter-spacing: 2px; }
+.main-content sup { text-transform: none; font-weight: 400; font-size: 20px; }
+
+.place { margin: 35px 0 0px; }
+.place p {font-weight: 400;font-size: 25px;text-align: center;letter-spacing: 2px;margin: 0px;}
+
+
+.footer-inner-wraper { max-width: 1080px; width: 100%; padding: 115px 0; margin: 0 auto;  }
+.footer-content { max-width: 665px; width: 100%; margin: 0 auto; border-top: 1px solid #000; border-bottom: 1px solid #000; padding: 25px 0;}
+.footer-content p { margin: 0px; font-weight: 400; font-size: 34px; letter-spacing: 2px; text-align: center; text-transform: uppercase; line-height: 46px; }
+.footer-content p.dark-fonts { font-weight: 700; }
+
+
+@media screen and (max-width: 991px){   
+	.inner-wraper { padding: 50px 0; }
+	.content { padding-top: 152px; padding-bottom: 152px; }
+
+
+}
+
+
+
+@media screen and (max-width: 767px){    
+	/*.wraper {background: url('../images/count-down-bg.jpg') no-repeat center top;}*/
+ 	.inner-wraper { box-sizing: border-box; padding: 100px 65px; width: 100%; }
+ 	.logo img { max-width: 110px; }
+ 	.main-content p { font-size: 10px; line-height: 14px; font-weight:bolder; }
+ 	.content { padding-top: 75px; padding-bottom: 75px;}
+ 	.place p { font-size: 9px; }
+ 	.main-content sup { font-size: 10px; font-weight:bolder; }
+ 	.timer { padding-top: 30px; font-size: 18px; padding-bottom: 0; margin-bottom: 5px; line-height: 30px; font-weight:bold; }
+ 	.footer-inner-wraper { padding: 20px 20px; box-sizing: border-box; }
+ 	.footer-content p { font-size: 12px; line-height: 16px; }
+ 	/*.footer { height: 150px; }*/
+ 	.footer-content { padding: 10px 0; width:70%; }
+ 	.place { margin-top: 20px; }
+	
+}

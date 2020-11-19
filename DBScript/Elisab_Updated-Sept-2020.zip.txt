@@ -1,0 +1,12 @@
+ALTER TABLE [dbo].[Addresses]
+ADD
+[IsActive] [bit] NOT NULL CONSTRAINT [DF_Addresses_IsActive_1]  DEFAULT ((0))
+
+ALTER TABLE [dbo].[MainPages]
+ADD
+[IsActive] [bit] NOT NULL CONSTRAINT [DF_MainPages_IsActive]  DEFAULT ((0))
+
+ALTER TABLE [dbo].[SecondPages]
+ADD
+[IsActive] [bit] NOT NULL CONSTRAINT [DF_SecondPages_IsActive]  DEFAULT ((0)),
+[IsShowAtLast] [bit] NOT NULL CONSTRAINT [DF_SecondPages_IsShowAtLast]  DEFAULT ((0))

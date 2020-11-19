@@ -1,0 +1,28 @@
+
+@{
+    ViewBag.Title = "Image Gallery";
+}
+
+<section class="content-header">
+  <h1>
+    @ViewBag.Title
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a href="@Url.Action("Index", "Home")">
+        <i class="fa fa-home"></i> Home
+      </a>
+    </li>
+    <li class="active">
+      <a href="@Url.Action("Index", "Image")">
+        @ViewBag.Title
+      </a>
+    </li>
+  </ol>
+</section>
+<div class="box box-primary clear">
+  <div class="box-body">
+
+    Test
+</div>
+</div>

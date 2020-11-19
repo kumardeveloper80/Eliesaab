@@ -1,0 +1,197 @@
+@model Elisab.BAL.ViewModel.Section_VM
+@{
+  ViewBag.Title = "Other Sections";
+}
+<section class="content-header">
+  <h1>
+    @ViewBag.Title
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a href="@Url.Action("Index", "Home")">
+        <i class="fa fa-home"></i> Home
+      </a>
+    </li>
+    <li class="active">
+      <a href="@Url.Action("List", "Section")">
+        @ViewBag.Title
+      </a>
+    </li>
+  </ol>
+</section>
+
+<div class="box box-primary clear">
+  <form role="form" id="secondPageForm">
+    <div class="box-body">
+
+      <div class="row">
+        <div class="form-group col-xs-12">
+          <div class="row">
+            <div class="col-sm-10">
+              <label class="control-label">Fashion Show Name<span class="require">*</span></label>
+              <select class="form-control selectpicker" id="fashionShowId" onchange="onFashionShowChange()">
+                <option disabled selected> Select </option>
+                @foreach (var item in ViewData["fashionShow"] as List<Elisab.BAL.ViewModel.FashionShows_VM>)
+                {
+                  <option value="@item.Id"> @item.Name </option>
+                }
+              </select>
+            </div>
+
+            <div class="col-sm-2 text-right">
+              <label class="control-label d-block">&nbsp;</label>
+              <input type="button" id="addContent" class="btn btn-primary" value="Add New Section" onclick="onAddSection();" />
+
+            </div>
+          </div>
+
+          <div id="sectionListDiv"></div>
+
+        </div>
+      </div>
+
+    </div>
+
+
+  </form>
+</div>
+
+<div class="modal fade" tabindex="-1" id="sectionModel" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog modal-lg">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h4 class="modal-title">Add Section</h4>
+      </div>
+
+      <div class="modal-body">
+        @Html.HiddenFor(m => m.Id, new { id = "sectionId" })
+
+        <div class="form-group">
+          <label>
+            Media Type<span class="require">*</span>
+          </label>
+          <select class="form-control selectpicker" id="mediaType" onchange="onMediaTypeChange()">
+            @foreach (var item in ViewData["mediadType"] as Dictionary<string, string>)
+            {
+              <option value="@item.Key"> @item.Value </option>
+            }
+          </select>
+        </div>
+
+        @* div for multi text and single image upload *@
+        <div class="form-group" id="div_Txt">
+          <div class="row">
+            <div class="form-group col-sm-12">
+              <label>Description<span class="require">*</span></label>
+              @Html.TextAreaFor(m => m.Description, new { id = "multiText", placeholder = "Description", @class = "ckeditor" })
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-sm-12">
+              <div id="txtImgUploadDiv">
+                <input type="file" accept="image/*" id="txtImgUpload">
+                <img class="mt-15 img-responsive h-150" src="" width="150" alt="" id="sectionTxtImg">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+        @* div for only video upload *@
+        <div class="form-group" id="div_video">
+
+          <div class="row">
+            <div class="col-xs-6">
+              <label>Video<span class="require">*</span></label>
+
+              <div id="videoUploadDiv">
+                <input type="file" accept="video/*" id="videoUpload">
+              </div>
+
+              <div id="divVideo" class="mt-15">
+                <video id="sectionVideo" controls height="200" width="250">
+                  <source src="" type="video/*" />
+                </video>
+              </div>
+
+            </div>
+
+            <div class="col-xs-6">
+              <label>Poster<span class="require">*</span></label>
+              <div id="imgUploadDiv">
+                <input type="file" accept="image/*" id="posterUpload">
+                <img class="mt-15 img-responsive h-150" src="" width="150" alt="" id="posterImg">
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+        @* div for single line text and image upload *@
+        <div class="form-group" id="div_imgTxt">
+
+          <div class="row">
+            <div class="form-group col-sm-12">
+              <label>Text<span class="require">*</span></label>
+              <div id="txtDiv">
+                @Html.TextAreaFor(m => m.Description, new { placeholder = "Text", @class = "form-control text-area" })
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-sm-12">
+              <div id="imgUploadDiv">
+                <input type="file" accept="image/*" id="imgTxtUpload">
+                <img class="mt-15 img-responsive h-150" src="" width="150" alt="" id="sectionImg">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        @* div for multiple images upload *@
+        <div class="form-group" id="div_image">
+          <label>
+            Multiple Image
+            <span class="require">*</span>
+          </label>
+
+          <div id="imgUploadDiv">
+            <input type="file" accept="image/*" id="imgsUpload" multiple>
+            <div id="image-listDiv">
+              <div id="multiImgDiv" class="mt-15"></div>
+              <div id="oldImgDiv" class="mt-15"></div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="modal-footer clear">
+        <button type="button" id="btnSubmit" class="btn btn-primary" onclick="onSubmit()">
+          Submit
+        </button>
+
+        <button type="button" id="btnHideModal" class="btn btn-default" onclick="fnCloseModel()">
+          Cancel
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+<script src="~/Content/js/plugins/jquery/jquery-3.3.1.min.js"></script>
+<script src="~/Content/ckeditor/ckeditor.js"></script>
+<script src="~/Script/SectionPage.js?@Elisab.WebApp.Helper.Helper.UnqiueId()"></script>
+

@@ -1,0 +1,41 @@
+@using WebHelpers.Mvc5
+<aside class="main-sidebar">
+    <section class="sidebar">
+        @* BEGIN Menu *@
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="@Url.IsLinkActive("Index", "Home")">
+          <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> <span>Home</span></a>
+        </li>
+
+        <li class="@Url.IsLinkActive("List", "FashionShow")">
+          <a href="@Url.Action("List", "FashionShow")"><i class="fa fa-female"></i> <span>Fashion Shows</span></a>
+        </li>
+
+        <li class="@Url.IsLinkActive("Index", "MainPage")">
+          <a href="@Url.Action("Index", "MainPage")"><i class="fa fa-file-text"></i> <span>Main Section</span></a>
+        </li>
+
+        <li class="@Url.IsLinkActive("Index", "SecondPage")">
+          <a href="@Url.Action("Index", "SecondPage")"><i class="fa fa-file-text"></i> <span>Second Section</span></a>
+        </li>
+
+        <li class="@Url.IsLinkActive("List", "Section")">
+          <a href="@Url.Action("List", "Section")"><i class="fa fa-th-large"></i> <span>Other Sections</span></a>
+        </li>
+
+        <li class="@Url.IsLinkActive("Index", "Address")">
+          <a href="@Url.Action("Index", "Address")"><i class="fa fa-map-marker"></i> <span>Address Section</span></a>
+        </li>
+
+        <li class="@Url.IsLinkActive("List", "ImageGallery")">
+          <a href="@Url.Action("List", "ImageGallery")"><i class="fa fa-image"></i> <span>Image Gallery</span></a>
+        </li>
+
+        <li class="@Url.IsLinkActive("Setting", "CountDownPage")">
+          <a href="@Url.Action("Setting", "CountDownPage")"><i class="fa fa-clock-o"></i> <span>Count Down Page</span></a>
+        </li>
+
+      </ul>
+        @* END Menu *@
+    </section>
+</aside>

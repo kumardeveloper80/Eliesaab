@@ -1,0 +1,86 @@
+@model Elisab.BAL.ViewModel.CountDownPage_VM
+@{
+  Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width" />
+  <link href="~/Content/countdown/countdown.css" rel="stylesheet" />
+  <link rel="icon" href="~/Content/images/fevicon.png" type="image/gif">
+  <title>ELIS SAAB - Count Down</title>
+</head>
+
+<body>
+  @if (Model != null)
+  {
+    @Html.HiddenFor(m => m.ShowDate)
+    <div class="wraper">
+      <div class="inner-wraper" style="background: url('../../UploadImg/@Model.MainBgImg') no-repeat center top">
+        <div class="content" style="background: url('../../UploadImg/@Model.MainInnerImg')">
+          <div class="logo">
+            <img src="~/UploadImg/@Model.HeaderLogo" alt="ELIE SAAB" title="ELIE SAAB">
+          </div>
+          <div class="timer">
+            <ul id="example">
+              <li><span class="days">00</span></li>
+              <li class="seperator">:</li>
+              <li><span class="hours">00</span></li>
+              <li class="seperator">:</li>
+              <li><span class="minutes">00</span></li>
+              <li class="seperator">:</li>
+              <li><span class="seconds">00</span></li>
+            </ul>
+          </div>
+          <div class="main-content">
+            @(new HtmlString(Model.MainContent))
+          </div>
+          @*<div class="place">
+              <p>Pavillon Ledoyen, Alléno Paris</p>
+            </div>*@
+        </div>
+      </div>
+      <div class="footer">
+        <div class="footer-inner-wraper" style="background: url('../../UploadImg/@Model.FooterBgImg') no-repeat center top">
+          <div class="footer-content">
+            <p>Scan the code again</p>
+            <p class="dark-fonts">On the day of the show</p>
+            <p>to access the collection story</p>
+            <p>and inspiration</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+  else
+  {
+    <h2 style="text-align:center">Page Not Found</h2>
+  }
+
+
+  <script src="~/Content/landingpage/jquery-1.11.1.min.js"></script>
+  <script src="~/Content/countdown/jquery.countdown.min.js"></script>
+
+  <script type="text/javascript">
+    $('#example').countdown({
+      //date: '12/27/2019 15:00:00',
+      date: new Date(Date.parse($("#ShowDate").val())),
+      offset: 5.5,
+      day: 'Day',
+      days: 'Days',
+      hour: 'Hour',
+      hours: 'Hours',
+      minute: 'Minute',
+      minutes: 'Minutes',
+      second: 'Second',
+      seconds: 'Seconds'
+
+    }, function () {
+      //alert('Done!');
+    });
+  </script>
+
+</body>
+</html>

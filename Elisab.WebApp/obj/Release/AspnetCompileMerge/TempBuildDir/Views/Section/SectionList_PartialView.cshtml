@@ -1,0 +1,68 @@
+@model List<Elisab.BAL.ViewModel.Section_VM>
+
+@if (Model != null)
+{
+  <div class="mt-40">
+    <table class="table table-bordered " id="sectionTable">
+      <thead>
+        <tr>
+          <th class="w-5 no-sort ">Sequence</th>
+          <th class="w-80">Media Type</th>
+          <th class="no-sort text-center w-10">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (var item in Model)
+        {
+          <tr id="@item.Id">
+            <td style="cursor: all-scroll;">@item.Sequence</td>
+            <td>@item.MediaType</td>
+            <td class="text-center">
+              <a href="javascript:onEdit('@item.Id')" class="mr-10">
+                <i class="fa fa-edit" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:if (confirm('Are you sure you want to delete this section ?')) { onDelete('@item.Id') }">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              </a>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+}
+@*<script src="~/Content/datatable/jquery.dataTables.min.js"></script>*@
+
+<script src="~/Content/datatable/dataTables.rowReorder.min.js"></script>
+
+@*<script src="~/Script/SectionPage.js?@Elisab.WebApp.Helper.Helper.UnqiueId()"></script>*@
+
+<script>
+  $(document).ready(function () {
+    var Table = $('#sectionTable').DataTable({
+      "columnDefs": [{
+        "targets": 'no-sort',
+        "orderable": false,
+      }],
+      rowReorder: [{
+        dataSrc: 'Id',
+        update: false
+      }]
+    });
+    var data = [];
+    Table.on('row-reorder', function (e, diff, edit) {
+      data = [];
+      for (var i = 0, ien = diff.length; i < ien; i++) {
+        var obj = new Object();
+        obj.Id = edit.nodes[i].id;
+        obj.FashionShowId = $("#fashionShowId").val();
+        obj.Sequence = diff[i].newPosition;
+        data.push(obj);
+      }
+      if (data.length > 0) {
+        updateSequence(data);
+      }
+    });
+  });
+</script>

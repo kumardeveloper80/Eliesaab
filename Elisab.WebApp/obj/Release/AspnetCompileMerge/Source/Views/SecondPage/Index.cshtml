@@ -1,0 +1,155 @@
+@model Elisab.BAL.ViewModel.SecondPage_VM
+@{
+  ViewBag.Title = "Second Section";
+}
+
+<section class="content-header">
+  <h1>
+    @ViewBag.Title
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a href="@Url.Action("Index", "Home")">
+        <i class="fa fa-home"></i> Home
+      </a>
+    </li>
+    <li class="active">
+      <a href="@Url.Action("Index", "SecondPage")">
+        @ViewBag.Title
+      </a>
+    </li>
+  </ol>
+</section>
+
+<div class="box box-primary clear">
+  <form role="form" id="secondPageForm">
+    <div class="box-body">
+
+      @Html.HiddenFor(m => m.Id, new { id = "secondPageId" })
+
+      <div class="row">
+        <div class="form-group col-xs-12">
+          <div class="row">
+            <div class="col-sm-7 col-md-8 col-lg-10">
+              <label class="control-label">Fashion Show Name<span class="require">*</span></label>
+
+              <select class="form-control selectpicker" id="fashionShowId" onchange="onFashionShowChange()">
+                <option disabled selected> Select </option>
+                @foreach (var item in ViewData["fashionShow"] as List<Elisab.BAL.ViewModel.FashionShows_VM>)
+                {
+                  <option value="@item.Id"> @item.Name </option>
+                }
+              </select>
+              @Html.ValidationMessageFor(m => m.FashionShowId, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-sm-5 col-md-4 col-lg-2 text-right">
+              <label class="control-label d-block">&nbsp;</label>
+              <input type="button" id="addContent" class="btn btn-primary" value="Add New" onclick="AddContent();" />
+              <input type="button" id="removeContent" class="btn btn-default" style="display:none" value="Remove" onclick="RemoveContent();" />
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="div_0" class="row">
+        <div class="col-sm-7 col-md-8 col-lg-10">
+          <label class="control-label">Content<span class="require">*</span></label>
+          @Html.TextAreaFor(m => m.HtmlContent1, new { @class = "ckeditor" })
+        </div>
+        <div class="col-sm-5 col-md-4 col-lg-2 text-right">
+          <div class="row">
+            <div class="col-xs-12 secondpage-img">
+              @Html.TextBoxFor(m => m.Image1, "", new { type = "file", id = "imageUpload1", onchange = "onUpolad(1)", accept = "image/*" })
+            </div>
+            <div class="col-xs-12 secondpage-img">
+              <img src="" width="150" class="img-responsive h-150" alt="" id="backGroundImage1">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="div_1" class="row commonDiv">
+
+        <div class="col-sm-7 col-md-8 col-lg-10">
+          @Html.TextAreaFor(m => m.HtmlContent2, new { @class = "ckeditor" })
+        </div>
+
+        <div class="col-sm-5 col-md-4 col-lg-2 text-right">
+          <div class="row">
+            <div class="col-xs-12 secondpage-img">
+              @Html.TextBoxFor(m => m.Image2, "", new { type = "file", id = "imageUpload2", onchange = "onUpolad(2)", accept = "image/*" })
+            </div>
+            <div class="col-xs-12 secondpage-img">
+              <img src="" width="150" class="img-responsive h-150" alt="" id="backGroundImage2">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="div_2" class="row commonDiv">
+        <div class="col-sm-7 col-md-8 col-lg-10">
+          @Html.TextAreaFor(m => m.HtmlContent3, new { @class = "ckeditor" })
+        </div>
+
+        <div class="ol-sm-5 col-md-4 col-lg-2 text-right">
+          <div class="row">
+            <div class="col-xs-12 secondpage-img">
+              @Html.TextBoxFor(m => m.Image3, "", new { type = "file", id = "imageUpload3", onchange = "onUpolad(3)", accept = "image/*" })
+            </div>
+            <div class="col-xs-12 secondpage-img">
+              <img src="" width="150" class="img-responsive h-150" alt="" id="backGroundImage3">
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="div_3" class="row commonDiv">
+        <div class="col-sm-7 col-md-8 col-lg-10">
+          @Html.TextAreaFor(m => m.HtmlContent4, new { @class = "ckeditor" })
+        </div>
+
+        <div class="col-sm-5 col-md-4 col-lg-2 text-right">
+          <div class="row">
+            <div class="col-xs-12 secondpage-img">
+              @Html.TextBoxFor(m => m.Image4, "", new { type = "file", id = "imageUpload4", onchange = "onUpolad(4)", accept = "image/*" })
+            </div>
+            <div class="col-xs-12 secondpage-img">
+              <img src="" width="150" class="img-responsive h-150" alt="" id="backGroundImage4" />
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="div_4" class="row commonDiv">
+        <div class="col-sm-7 col-md-8 col-lg-10">
+          @Html.TextAreaFor(m => m.HtmlContent5, new { @class = "ckeditor" })
+        </div>
+
+        <div class="col-sm-5 col-md-4 col-lg-2 text-right">
+          <div class="row">
+            <div class="col-xs-12 secondpage-img">
+              @Html.TextBoxFor(m => m.Image5, "", new { type = "file", id = "imageUpload5", onchange = "onUpolad(5)", accept = "image/*" })
+            </div>
+            <div class="col-xs-12 secondpage-img">
+              <img src="" width="150" class="img-responsive h-150" alt="" id="backGroundImage5">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="box-footer">
+      <button type="button" class="btn btn-primary" onclick="onSubmit()">Submit</button>
+    </div>
+
+  </form>
+</div>
+<script src="~/Content/ckeditor/ckeditor.js"></script>
+<script src="~/Script/SecondPage.js?@Elisab.WebApp.Helper.Helper.UnqiueId()"></script>

@@ -1,0 +1,234 @@
+@model Elisab.BAL.ViewModel.LandingPage_VM
+@{
+  Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width" />
+  <title>Index</title>
+  <link href="~/Content/landingpage/owl.carousel.min.css" rel="stylesheet" />
+  <link href="~/Content/landingpage/owl.theme.default.min.css" rel="stylesheet" />
+  <link href="~/Content/landingpage/style1.css" rel="stylesheet" />
+  <style>
+    .item p {
+      text-align: justify;
+    }
+
+    .owl-theme .owl-nav [class*="owl-"] {
+      display: none;
+    }
+
+    [class*="section-"], .section-video video {
+      border-bottom: 5px solid white;
+    }
+  </style>
+</head>
+<body>
+
+
+  @if (Model != null)
+  {
+    <div class="wraper">
+
+      @if (Model.mainPage != null)
+      {
+        <div class="section-one" style="background: url('../../@System.Configuration.ConfigurationManager.AppSettings["UploadImg"]/@Model.mainPage.BackgroundImage')">
+          <div class="wraper-m-border height100-wraper">
+            <div class="inner-wraper">
+              <div class="content inner-content" style="background: url(../../@System.Configuration.ConfigurationManager.AppSettings["UploadImg"]/@Model.mainPage.InnerImage)">
+                <div class="logo">
+                  <img src="/@System.Configuration.ConfigurationManager.AppSettings["UploadImg"]/@Model.mainPage.LogoImage" alt="ESHC_STD" title="ESHC_STD">
+                </div>
+                <div class="main-content">
+                  <div class="winter-2019">
+                    <p>@Model.mainPage.ContentText</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+
+      @if (Model.secondPage != null)
+      {
+        <div class="section-two section-bg-white" style="background-image: url('../../@System.Configuration.ConfigurationManager.AppSettings["UploadImg"]/@Model.secondPage.Image1')">
+          <div class="collection-slider-1 owl-carousel owl-theme">
+
+            @if (Model.secondPage.HtmlContent1 != "")
+            {
+              <div class="item">
+                @(new HtmlString(Model.secondPage.HtmlContent1))
+              </div>
+            }
+
+            @if (Model.secondPage.HtmlContent2 != "")
+            {
+              <div class="item">
+                @(new HtmlString(Model.secondPage.HtmlContent2))
+              </div>
+            }
+
+            @if (Model.secondPage.HtmlContent3 != "")
+            {
+              <div class="item">
+                @(new HtmlString(Model.secondPage.HtmlContent3))
+              </div>
+            }
+
+            @if (Model.secondPage.HtmlContent4 != "")
+            {
+              <div class="item">
+                @(new HtmlString(Model.secondPage.HtmlContent4))
+              </div>
+            }
+
+            @if (Model.secondPage.HtmlContent5 != "")
+            {
+              <div class="item">
+                @(new HtmlString(Model.secondPage.HtmlContent5))
+              </div>
+            }
+
+          </div>
+        </div>
+      }
+
+
+
+      @if (Model.sectionPage != null && Model.sectionPage.Any())
+      {
+        foreach (var data in Model.sectionPage)
+        {
+          if (data.MediaType == Elisab.WebApp.Helper.Helper.VideoType)
+          {
+            <div class="section-video">
+              <video playsinline="playsinline" loop="loop" controls poster="/@System.Configuration.ConfigurationManager.AppSettings["UploadImg"]/@data.sectionMedia[0].PosterImageName">
+                <source src="/@System.Configuration.ConfigurationManager.AppSettings["UploadImg"]/@data.sectionMedia[0].MediaName">
+              </video>
+            </div>
+          }
+          else if (data.MediaType == Elisab.WebApp.Helper.Helper.ImageType)
+          {
+            <div class="section-gallery">
+              <div class="gallery-slider owl-carousel owl-theme">
+                @foreach (var media in data.sectionMedia)
+                {
+                  <div class="item">
+                    <img src="~/UploadImg/@media.MediaName" alt="">
+                  </div>
+                }
+              </div>
+            </div>
+          }
+          else if (data.MediaType == Elisab.WebApp.Helper.Helper.ImageTxtType)
+          {
+            <div class="section-message" style="background-image: url('../../@System.Configuration.ConfigurationManager.AppSettings["UploadImg"]/@data.sectionMedia[0].MediaName')">
+              <div class="message-box">
+                @(new HtmlString(data.Description))
+              </div>
+            </div>
+          }
+          else if (data.MediaType == Elisab.WebApp.Helper.Helper.TextType)
+          {
+            <div class="section-message" style="background-image: url('../../@System.Configuration.ConfigurationManager.AppSettings["UploadImg"]/@data.sectionMedia[0].MediaName')">
+              <div class="message-box">
+                @(new HtmlString(data.Description))
+              </div>
+            </div>
+          }
+        }
+      }
+
+
+
+      @{
+
+        string Img = string.Empty;
+        if (Model.addressPage != null && Convert.ToString(Model.addressPage.ImageName).Trim() != "")
+        {
+          Img = Model.addressPage.ImageName;
+        }
+        <div class="section-press section-bg-white" style="background-image: url('../../@System.Configuration.ConfigurationManager.AppSettings["UploadImg"]/@Img')">
+          <div class="press-text-block">
+            <p>
+              <strong>BUYERS :</strong><br />
+              <a href="mailto:commercial@eliesaab.com ">commercial@eliesaab.com</a><br />
+              <a href="tel:+33 (0)7 88 29 48 38">+33 (0)7 88 29 48 38</a>
+            </p>
+            <p>
+              <strong>PRESS :</strong><br />
+              <a href="mailto:presse-fr@eliesaab.com">presse-fr@eliesaab.com</a><br />
+              <a href="tel:+33 (0)1 42 56 68 90">+33 (0)1 42 56 68 90</a>
+            </p>
+
+            @if (Model.addressPage != null && Model.addressPage.HeaderText != "")
+            {
+              <h3 class="salon-h">@Model.addressPage.HeaderText</h3>
+            }
+            else
+            {
+              <h3 class="salon-h">Please set header from backoffice</h3>
+            }
+            <p>
+              <strong>PARIS :</strong> <a href="mailto:george5@eliesaab.com">george5@eliesaab.com</a><br />
+              <a href="javascript:void(0);">31, Avenue George V</a><br />
+              <a href="javascript:void(0);">75008, Paris</a><br />
+              <a href="tel:+ 33 (0)1 42 56 77 71">+ 33 (0)1 42 56 77 71</a>
+            </p>
+
+            <p>
+              <strong>NEW YORK :</strong> <a href="mailto:madison@eliesaab.com">madison@eliesaab.com</a><br />
+              <a href="javascript:void(0);">860, Madison Avenue</a><br />
+              <a href="javascript:void(0);">10021, New York</a><br />
+              <a href="tel:+1 (212) 933 45 66">+1 (212) 933 45 66</a>
+            </p>
+
+            <p>
+              <strong>LONDON :</strong> <a href="mailto:brutonstreet@eliesaab.com">brutonstreet@eliesaab.com</a><br />
+              <a href="javascript:void(0);">24 Bruton Street, Mayfair</a><br />
+              <a href="javascript:void(0);">W1J 6QQ, London</a><br />
+              <a href="tel:++44 20 8173 5000">+44 20 8173 5000</a>
+            </p>
+
+            <p>
+              <strong>BEIRUT :</strong> <a href="mailto:beirut@eliesaab.com">beirut@eliesaab.com</a><br />
+              <a href="javascript:void(0);">ELIE SAAB Building, Beirut Central District</a><br />
+              <a href="javascript:void(0);">2021-4516, Beirut</a><br />
+              <a href="tel:+961 1 981 983">+961 1 981 983</a>
+            </p>
+
+            <p>
+              <strong>DUBAI :</strong> <a href="mailto:dubaimall@eliesaab.com">dubaimall@eliesaab.com</a><br />
+              <a href="javascript:void(0);">The Dubai Mall, Fashion Avenue, RTW Level</a><br />
+              <a href="javascript:void(0);">27026, Dubai</a><br />
+              <a href="tel:+971 4 330 8222">+971 4 330 8222</a>
+            </p>
+
+            <p>
+              <strong>DUBAI :</strong> <a href="mailto:malloftheemirates@eliesaab.com">malloftheemirates@eliesaab.com</a><br />
+              <a href="javascript:void(0);">Mall of the Emirates, Fashion Dome, Level 2 </a><br />
+              <a href="javascript:void(0);">72999, Dubai </a><br />
+              <a href="tel:+971 4 395 1600">+971 4 395 1600</a>
+            </p>
+            <br />
+
+            <p class="link"><a style="cursor:pointer;" target="_blank" href="/GalleryLogin/Index/@Elisab.WebApp.Helper.Helper.EncodeServerName(Model.fashionId.ToString())">Download Image Gallery</a></p>
+          </div>
+        </div>
+
+      }
+    </div>
+  }
+  else
+  {
+    <h2 style="text-align:center">No preview available</h2>
+  }
+
+  <script src="~/Content/landingpage/jquery-1.11.1.min.js"></script>
+  <script src="~/Content/landingpage/owl.carousel.min.js"></script>
+  <script src="~/Content/landingpage/global.js"></script>
+</body>
+</html>

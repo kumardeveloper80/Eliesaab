@@ -1,0 +1,62 @@
+
+@model Elisab.BAL.ViewModel.ImageGallery_VM
+
+@{
+  ViewBag.Title = "Image Gallery";
+}
+
+
+
+<section class="content-header">
+  <h1>
+    @ViewBag.Title
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a href="@Url.Action("Index", "Home")">
+        <i class="fa fa-dashboard"></i> Home
+      </a>
+    </li>
+    <li class="active">
+      <a href="@Url.Action("List", "ImageGallery")">
+        @ViewBag.Title
+      </a>
+    </li>
+  </ol>
+</section>
+
+<div class="box box-primary clear">
+  <div class="box-body">
+    @Html.HiddenFor(m => m.Id, new { id = "imageId" })
+
+    <div class="row">
+      <div class="form-group col-sm-6">
+        <label>Fashion Show Name<span class="require">*</span></label>
+        <select class="form-control selectpicker" id="fashionShowId" onchange="BindImageGallery()">
+          <option disabled selected> Select </option>
+          @foreach (var item in ViewData["fashionShow"] as List<Elisab.BAL.ViewModel.FashionShows_VM>)
+          {
+            <option value="@item.Id"> @item.Name </option>
+          }
+        </select>
+      </div>
+
+
+      <div class="form-group col-sm-6">
+        <label> Image<span class="require">*</span></label>
+        <div id="imgUploadDiv">
+          <input type="file" accept="image/*" id="imgUpload">
+        </div>
+      </div>
+
+
+   </div>
+    <div  id="imgDiv">
+
+    </div>
+  </div>
+</div>
+
+
+<script src="~/Content/js/plugins/jquery/jquery-3.3.1.min.js"></script>
+<script src="~/Script/ImageGallery.js?@Elisab.WebApp.Helper.Helper.UnqiueId()"></script>

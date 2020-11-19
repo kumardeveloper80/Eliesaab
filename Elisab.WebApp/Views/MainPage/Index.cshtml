@@ -1,0 +1,103 @@
+@model Elisab.BAL.ViewModel.MainPage_VM
+@{
+    ViewBag.Title = "Main Section";
+}
+<section class="content-header">
+    <h1>
+        @ViewBag.Title
+    </h1>
+    <ol class="breadcrumb">
+        <li>
+            <a href="@Url.Action("Index", "Home")">
+                <i class="fa fa-dashboard"></i> Home
+            </a>
+        </li>
+        <li class="active">
+            <a href="@Url.Action("Index", "MainPage")">
+                @ViewBag.Title
+            </a>
+        </li>
+    </ol>
+</section>
+
+<div class="box box-primary clear">
+    <div class="box-body">
+        @Html.HiddenFor(m => m.Id, new { id = "mainPageId" })
+
+        <div class="row">
+            <div class="form-group col-sm-6">
+                <label>Fashion Show Name<span class="require">*</span></label>
+                <select class="form-control selectpicker" id="fashionShowId" onchange="onFashionShowChange()">
+                    <option disabled selected> Select </option>
+                    @foreach (var item in ViewData["fashionShow"] as List<Elisab.BAL.ViewModel.FashionShows_VM>)
+                    {
+                        <option value="@item.Id"> @item.Name </option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group col-sm-6">
+                <label>Content Text<span class="require">*</span></label>
+                @Html.TextBoxFor(m => m.ContentText, new { placeholder = "Name", @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-4">
+                <label>Background Image<span class="require">*</span></label>
+                <div id="imgUploadDiv">
+                    <input type="file" accept="image/*" id="imgUpload1">
+                </div>
+            </div>
+
+            <div class="form-group col-sm-4">
+                <label>Inner Image<span class="require">*</span></label>
+                <div id="imgUploadDiv">
+                    <input type="file" accept="image/*" id="imgUpload2">
+                </div>
+            </div>
+
+            <div class="form-group col-sm-4">
+                <label>Logo Image<span class="require">*</span></label>
+                <div id="imgUploadDiv">
+                    <input type="file" accept="image/*" id="imgUpload3">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-4">
+                <div class="pull-left position-relative">
+                    <img class="mt-15" src="" width="150" height="150" alt="" id="backgroundImg">
+                </div>
+            </div>
+
+            <div class="form-group col-sm-4">
+                <div class="pull-left position-relative">
+                    <img class="mt-15" src="" width="150" height="150" alt="" id="imgInner">
+                </div>
+            </div>
+
+            <div class="form-group col-sm-4">
+                <div class="pull-left position-relative">
+                    <img class="mt-15" src="" width="150" height="150" alt="" id="imgLogo">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-4">
+                @Html.CheckBoxFor(m => m.IsActive, new { @checked = true, @class = "" })
+                @Html.LabelFor(m => m.IsActive, "Is Active?")
+            </div>
+        </div>
+
+    </div>
+
+    <div class="box-footer">
+        <button type="button" class="btn btn-primary" onclick="onSubmit()">Submit</button>
+    </div>
+
+</div>
+
+<script src="~/Content/js/plugins/jquery/jquery-3.3.1.min.js"></script>
+<script src="~/Script/MainPage.js?@Elisab.WebApp.Helper.Helper.UnqiueId()"></script>

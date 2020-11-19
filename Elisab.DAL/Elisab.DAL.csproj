@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2BFF8660-5D46-4ED0-982C-3B83556D090A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Elisab.DAL</RootNamespace>
+    <AssemblyName>Elisab.DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Context\Address.cs" />
+    <Compile Include="Context\Admin.cs" />
+    <Compile Include="Context\CountDownPage.cs" />
+    <Compile Include="Context\ElisabDbContext.cs" />
+    <Compile Include="Context\FashionShow.cs" />
+    <Compile Include="Context\GalleryLogin.cs" />
+    <Compile Include="Context\ImageGallery.cs" />
+    <Compile Include="Context\MainPage.cs" />
+    <Compile Include="Context\SecondPage.cs" />
+    <Compile Include="Context\Section.cs" />
+    <Compile Include="Context\SectionMedia.cs" />
+    <Compile Include="Migrations\201909040718078_InitialCreate.cs" />
+    <Compile Include="Migrations\201909040718078_InitialCreate.Designer.cs">
+      <DependentUpon>201909040718078_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909041203507_09042019_1.cs" />
+    <Compile Include="Migrations\201909041203507_09042019_1.Designer.cs">
+      <DependentUpon>201909041203507_09042019_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909041340025_09042019_FashionShow.cs" />
+    <Compile Include="Migrations\201909041340025_09042019_FashionShow.Designer.cs">
+      <DependentUpon>201909041340025_09042019_FashionShow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909050620281_20190905-1.cs" />
+    <Compile Include="Migrations\201909050620281_20190905-1.Designer.cs">
+      <DependentUpon>201909050620281_20190905-1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909050737113_20190905-2.cs" />
+    <Compile Include="Migrations\201909050737113_20190905-2.Designer.cs">
+      <DependentUpon>201909050737113_20190905-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909051037155_20190905-4.cs" />
+    <Compile Include="Migrations\201909051037155_20190905-4.Designer.cs">
+      <DependentUpon>201909051037155_20190905-4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909051051090_20190905-5.cs" />
+    <Compile Include="Migrations\201909051051090_20190905-5.Designer.cs">
+      <DependentUpon>201909051051090_20190905-5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909051220582_Secondpage.cs" />
+    <Compile Include="Migrations\201909051220582_Secondpage.Designer.cs">
+      <DependentUpon>201909051220582_Secondpage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909060857325_09062019-Address.cs" />
+    <Compile Include="Migrations\201909060857325_09062019-Address.Designer.cs">
+      <DependentUpon>201909060857325_09062019-Address.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909101041119_09102019-MainPage.cs" />
+    <Compile Include="Migrations\201909101041119_09102019-MainPage.Designer.cs">
+      <DependentUpon>201909101041119_09102019-MainPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909110455083_09112019-MainPage.cs" />
+    <Compile Include="Migrations\201909110455083_09112019-MainPage.Designer.cs">
+      <DependentUpon>201909110455083_09112019-MainPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909110713328_20190911-Section.cs" />
+    <Compile Include="Migrations\201909110713328_20190911-Section.Designer.cs">
+      <DependentUpon>201909110713328_20190911-Section.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909120536006_09122019-ImageGallery.cs" />
+    <Compile Include="Migrations\201909120536006_09122019-ImageGallery.Designer.cs">
+      <DependentUpon>201909120536006_09122019-ImageGallery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909160506564_09162019-ImageGallery.cs" />
+    <Compile Include="Migrations\201909160506564_09162019-ImageGallery.Designer.cs">
+      <DependentUpon>201909160506564_09162019-ImageGallery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909170505460_09172019-GalleryLogin.cs" />
+    <Compile Include="Migrations\201909170505460_09172019-GalleryLogin.Designer.cs">
+      <DependentUpon>201909170505460_09172019-GalleryLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909190657166_20190919-1.cs" />
+    <Compile Include="Migrations\201909190657166_20190919-1.Designer.cs">
+      <DependentUpon>201909190657166_20190919-1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909191304222_20190919-2.cs" />
+    <Compile Include="Migrations\201909191304222_20190919-2.Designer.cs">
+      <DependentUpon>201909191304222_20190919-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910070734446_20191007-CountDownPage_TB.cs" />
+    <Compile Include="Migrations\201910070734446_20191007-CountDownPage_TB.Designer.cs">
+      <DependentUpon>201910070734446_20191007-CountDownPage_TB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910071051572_20191007-2.cs" />
+    <Compile Include="Migrations\201910071051572_20191007-2.Designer.cs">
+      <DependentUpon>201910071051572_20191007-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910080646318_20191008-1.cs" />
+    <Compile Include="Migrations\201910080646318_20191008-1.Designer.cs">
+      <DependentUpon>201910080646318_20191008-1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201909040718078_InitialCreate.resx">
+      <DependentUpon>201909040718078_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909041203507_09042019_1.resx">
+      <DependentUpon>201909041203507_09042019_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909041340025_09042019_FashionShow.resx">
+      <DependentUpon>201909041340025_09042019_FashionShow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909050620281_20190905-1.resx">
+      <DependentUpon>201909050620281_20190905-1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909050737113_20190905-2.resx">
+      <DependentUpon>201909050737113_20190905-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909051037155_20190905-4.resx">
+      <DependentUpon>201909051037155_20190905-4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909051051090_20190905-5.resx">
+      <DependentUpon>201909051051090_20190905-5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909051220582_Secondpage.resx">
+      <DependentUpon>201909051220582_Secondpage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909060857325_09062019-Address.resx">
+      <DependentUpon>201909060857325_09062019-Address.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909101041119_09102019-MainPage.resx">
+      <DependentUpon>201909101041119_09102019-MainPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909110455083_09112019-MainPage.resx">
+      <DependentUpon>201909110455083_09112019-MainPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909110713328_20190911-Section.resx">
+      <DependentUpon>201909110713328_20190911-Section.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909120536006_09122019-ImageGallery.resx">
+      <DependentUpon>201909120536006_09122019-ImageGallery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909160506564_09162019-ImageGallery.resx">
+      <DependentUpon>201909160506564_09162019-ImageGallery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909170505460_09172019-GalleryLogin.resx">
+      <DependentUpon>201909170505460_09172019-GalleryLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909190657166_20190919-1.resx">
+      <DependentUpon>201909190657166_20190919-1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909191304222_20190919-2.resx">
+      <DependentUpon>201909191304222_20190919-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910070734446_20191007-CountDownPage_TB.resx">
+      <DependentUpon>201910070734446_20191007-CountDownPage_TB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910071051572_20191007-2.resx">
+      <DependentUpon>201910071051572_20191007-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910080646318_20191008-1.resx">
+      <DependentUpon>201910080646318_20191008-1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

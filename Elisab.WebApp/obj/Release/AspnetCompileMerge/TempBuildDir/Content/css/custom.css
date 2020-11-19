@@ -1,0 +1,340 @@
+/*Loader css start*/
+.loader {
+  margin-left: 50%;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  position: absolute;
+  top: 40%;
+}
+
+.loader_Main {
+  top: 0;
+  left: 0;
+  position: fixed;
+  opacity: 0.8;
+  z-index: 10000000;
+  background: Black;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/*Loader css end*/
+
+.error {
+  border: 1px solid red !important;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.borderColor {
+  border-color: red !important;
+}
+
+#fashionShowTable input[type="checkbox"] {
+  height: 20px;
+  width: 20px;
+}
+
+.clear {
+  clear: both;
+}
+
+.deleteImage {
+  background-image: url(../images/closeButton.png);
+  background-repeat: no-repeat;
+  cursor: pointer;
+  right: -10px;
+  width: 22px;
+  height: 21px;
+  position: absolute;
+  top: 0px;
+}
+
+.addbtnDiv {
+  float: right;
+  margin-bottom: 15px;
+}
+
+.commonDiv {
+  padding-top: 10px;
+  display: none;
+}
+
+.require {
+  color: red;
+}
+
+.secondpage-img {
+  margin-top: 25px;
+}
+
+.content-header > .breadcrumb {
+  top: 0;
+}
+
+.content-header {
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu {
+  width: auto;
+}
+
+  .navbar-nav > .user-menu > .dropdown-menu > .user-footer {
+    background-color: #367fa9;
+  }
+
+.d-block {
+  display: block;
+}
+
+.mt-15 {
+  margin-top: 15px;
+}
+
+.mr-10 {
+  margin-right: 10px;
+}
+
+.mt-40 {
+  margin-top: 40px;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.mb-15 {
+  margin-bottom: 15px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.fa {
+  font-size: large
+}
+
+.fa-edit {
+  color: green;
+}
+
+.fa-trash {
+  color: red;
+}
+
+.mr-10 {
+  margin-right: 15px;
+}
+
+.w-5 {
+  width: 5% !important;
+}
+
+.w-70 {
+  width: 70% !important;
+}
+
+.w-90 {
+  width: 90% !important;
+}
+
+.w-10 {
+  width: 10% !important;
+}
+
+.w-20 {
+  width: 20% !important;
+}
+.w-50 {
+  width: 50% !important;
+}
+.h-150 {
+  height: 150px;
+}
+
+.mb-40 {
+  margin-bottom: 40px;
+}
+
+.mt-30 {
+  margin-top: 30px;
+}
+
+#image-listDiv {
+  display: none;
+  height: 320px;
+  overflow: auto;
+}
+
+#oldImgDiv .deleteImage {
+  cursor: pointer;
+  top: 0px;
+  position: relative;
+  right: -140px;
+  top: -170px
+}
+
+.fl-left {
+  float: left;
+}
+
+.text-area {
+  resize: none;
+  height: 100px !important;
+}
+
+[data-notify="container"] {
+  text-align: center !important;
+  z-index: 100000 !important;
+}
+
+  [data-notify="container"] > .close {
+    color: white !important;
+    font-weight: bold !important;
+    top: 15px !important;
+    right: 20px !important;
+    z-index: 0 !important;
+    opacity: unset !important
+  }
+
+
+/*Gallery Login CSS*/
+.gallery-login {
+  background-image: url(../images/gallery_login_bg.jpg);
+}
+.gallery-box {
+  width: 100%;
+  max-width:660px;
+  display: table;
+  height: 100%;
+  margin-top:0; margin-bottom:0;
+}
+
+  .gallery-box h4 {
+    border-top: 1px solid #111;
+    padding-top: 30px;
+    font-size:22px;
+  }
+  .gallery-box h5 {
+    font-size: 19px;
+    font-weight: normal;
+    letter-spacing: 2px;
+  }
+  .gallery-box ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #222;
+  }
+
+  .gallery-box ::-moz-placeholder { /* Firefox 19+ */
+    color: #222;
+  }
+
+  .gallery-box :-ms-input-placeholder { /* IE 10+ */
+    color: #222;
+  }
+
+  .gallery-box :-moz-placeholder { /* Firefox 18- */
+    color: #222;
+  }
+    .gallery-box form {
+      padding: 0 45px;
+    }
+  .gallery-box .form-control {
+    height: 42px;
+  }
+  .gallery-box .form-control-feedback {
+    height: 42px;
+    line-height: 42px;
+  }
+  .gallery-box .btn { padding-top:8px; padding-bottom:8px;
+  }
+.gallery-box-body {
+  background: none;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.bg-none {
+  background: none;
+  border: #777777;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 0px
+}
+.mb-30 {
+  margin-bottom: 30px;
+}
+.w-60 {
+  width: 60% !important;
+}
+
+/*Gallery List css*/
+.h-50 {
+  height: 50px;
+}
+.gallery-image img { width:100%;
+}
+
+.gallery-image { margin-top:30px;
+}
+.gallary-page-logo img { max-width:280px; margin:40px 0 20px;
+}
+
+.download-icon {
+  width: 50px;
+  height: 45px;
+  line-height: 45px;
+  background-color: #fff;
+  border-radius: 7px;
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+  text-align: center;
+}
+  .download-icon a {
+    display:block; line-height:45px; height:45px;
+  }
+    .download-icon .fa {
+      color: #797979; line-height:45px; font-size:20px;
+    }
+
+  @media screen and (max-width: 991px) {
+    .gallery-box form {
+    padding: 0;
+  }
+}
+
+
